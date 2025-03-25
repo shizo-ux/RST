@@ -1,0 +1,106 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Header Styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 0;
+}
+
+header div:first-child {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* centers the container horizontally */
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+}
+
+/* Centering the title using the custom <hi> element */
+hi {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Style for login and register buttons */
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: auto; /* pushes buttons to the far right */
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Ensure spacing between multiple buttons */
+header div:first-child button + button {
+    margin-left: 10px;
+}
+
+/* Navigation Bar */
+nav {
+    background-color: #34495e;
+    width: 100%;
+    padding: 10px 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 1200px;
+}
+
+li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+li:hover {
+    background-color: #1abc9c;
+    border-radius: 5px;
+}
+
+/* Hero Section */
+/* The container ensures the image covers the entire viewport width */
+.hero {
+    width: 100%;
+    overflow: hidden;  /* prevents horizontal scroll */
+}
+
+/* The image fills the container completely */
+.hero-image {
+    display: block;
+    width: 100%;
+    height: auto; /* maintain aspect ratio */
+}
+
+/* Additional Content Section */
+.content {
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
