@@ -104,3 +104,46 @@ li:hover {
     max-width: 1200px;
     margin: 0 auto;
 }
+section.contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto; /* Row 1 for h3, row 2 for email/address, row 3 for phone/postcode */
+    gap: 10px;
+    width: 100%;
+    padding: 20px;
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+section.contact h3 {
+    grid-column: 1 / -1; /* Span across both columns */
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Positioning for the first row: Email (left) and Address (right) */
+section.contact p.email {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: left;
+}
+
+section.contact p.adress {
+    grid-column: 2;
+    grid-row: 2;
+    text-align: right;
+}
+
+/* Positioning for the second row: Phone Number (left) and Postcode (right) */
+section.contact p.phone-number {
+    grid-column: 1;
+    grid-row: 3;
+    text-align: left;
+}
+
+section.contact p.postcode {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: right;
+}
