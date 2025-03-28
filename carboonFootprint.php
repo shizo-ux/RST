@@ -1,5 +1,8 @@
 <?php
 // carboonFootprint.php
+session_start();
+// Simulate user login status for now (in a real app, this would check a database/session)
+$isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +12,7 @@
     <title>Carbon Footprint Calculator - Roslo Technologies</title>
     <link rel="stylesheet" href="mystyle.css">
     <style>
-        form input[type="number"] {
+        form input[type="number"], form input[type="text"] {
             width: 60%;
             padding: 5px;
             margin-bottom: 10px;
@@ -41,7 +44,7 @@
             margin-top: 20px;
         }
 
-        .appointment, .advice {
+        .appointment, .advice, .booking-form {
             margin-top: 20px;
             padding: 10px;
             border-radius: 5px;
@@ -53,6 +56,10 @@
 
         .advice {
             background-color: #d4edda;
+        }
+
+        .booking-form {
+            background-color: #fff3cd;
         }
     </style>
 </head>
@@ -109,6 +116,8 @@
 </footer>
 
 <script>
+    const isLoggedIn = <?php echo $isLoggedIn ? 'true' : 'false'; ?>;
+
     function calculateCarbonFootprint() {
         const electricity = parseFloat(document.getElementById('electricity').value);
         const miles = parseFloat(document.getElementById('miles').value);
@@ -119,17 +128,16 @@
             return;
         }
 
-        // Rough estimate: emissions in tons of CO2/year
         const carbon = (electricity * 0.0004 * 12) + (miles * 0.000404 * 12) + (flights * 0.25);
-
         let resultHTML = `<p>Your estimated annual carbon footprint is <strong>${carbon.toFixed(2)}</strong> tons of CO2.</p>`;
 
         if (carbon > 10) {
             resultHTML += `
                 <div class="appointment">
                     <p>Your carbon footprint is higher than average. Would you like to speak with one of our sustainability consultants?</p>
-                    <button onclick="alert('Appointment booked! We will contact you soon.')">Book an Appointment</button>
+                    <button onclick="showBookingForm()">Book an Appointment</button>
                 </div>
+                <div id="bookingArea"></div>
             `;
         } else {
             resultHTML += `
@@ -140,6 +148,35 @@
         }
 
         document.getElementById('carbonResult').innerHTML = resultHTML;
+    }
+
+    function showBookingForm() {
+        if (!isLoggedIn) {
+            alert('You need to be logged in to book an appointment.');
+            return;
+        }
+
+        const formHTML = `
+            <div class="booking-form">
+                <h3>Book Your Appointment</h3>
+                <label for="fullName">Full Name:</label><br>
+                <input type="text" id="fullName" name="fullName"><br>
+
+                <label for="date">Preferred Date:</label><br>
+                <input type="text" id="date" name="date" placeholder="e.g. April 4, 2025"><br>
+
+                <label for="contact">Contact Info:</label><br>
+                <input type="text" id="contact" name="contact" placeholder="Email or Phone"><br><br>
+
+                <button onclick="submitBooking()">Submit</button>
+            </div>
+        `;
+
+        document.getElementById('bookingArea').innerHTML = formHTML;
+    }
+
+    function submitBooking() {
+        alert('Thank you! Your appointment has been submitted. We’ll be in touch soon.');
     }
 </script>
 </body>
