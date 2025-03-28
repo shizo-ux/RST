@@ -97,13 +97,6 @@ li:hover {
     height: auto; /* maintain aspect ratio */
 }
 
-/* Additional Content Section */
-.content {
-    padding: 20px;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
 section.contact {
     display: grid;
     grid-template-columns: 1fr 1fr;
