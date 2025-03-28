@@ -3,47 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roslo Technologies</title>
+    <title>Roslo Technologies - Home</title>
     <link rel="stylesheet" href="mystyle.css">
     <style>
-        /* Container that holds both calculator and green energy info */
-        .energy-section {
+        .hero {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .calculator-products {
             display: flex;
-            gap: 40px;
-            align-items: flex-start;
+            flex-wrap: wrap;
+            justify-content: space-between;
             padding: 20px;
-            flex-direction: row-reverse; /* green energy info on the right */
         }
 
-        .green-energy-info, .energy-calculator {
-            flex: 1;
+        .energy-calculator, .green-gas-products {
+            flex: 1 1 48%;
+            box-sizing: border-box;
         }
 
-        .green-energy-info {
-            max-width: 400px;
+        .green-gas-products {
+            padding-left: 20px;
         }
 
-        /* Make input fields a bit smaller for a cleaner look */
-        form input[type="number"] {
-            width: 60%;
-            padding: 5px;
+        .green-gas-products img {
+            width: 100%;
+            height: auto;
             margin-bottom: 10px;
+            border-radius: 8px;
         }
 
-        button {
-            padding: 8px 16px;
-            cursor: pointer;
-        }
-
-        footer {
-            background-color: purple;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-        }
-
-        .contact p.address {
-            text-align: right;
+        .contact {
+            margin-top: 40px;
+            background: #f4f4f4;
+            padding: 20px;
+            border-top: 1px solid #ccc;
         }
     </style>
 </head>
@@ -51,87 +54,92 @@
     <header>
         <div>
             <img id="logo" src="" alt="logo">
-            <h1>Roslo Technologies</h1>
+            <hi>Roslo Technologies</hi>
             <button id="login">Log in</button>
             <button id="register">Register</button>
         </div>
         <div>
             <nav>
                 <ul>
-                    <li class="home-page">Home Page</li>
-                    <li class="carbon-footprint-calculator">Carbon Footprint Calculator</li>
-                    <li class="reviews">Reviews</li>
-                    <li class="menu">Menu</li>
+                    <li><a href="index.html">Home Page</a></li>
+                    <li><a href="carboonFootprint.html">Carbon Footprint Calculator</a></li>
+                    <li><a href="review.html">Reviews</a></li>
+                    <li class="dropdown">
+                        <a href="#">Menu</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Account</a></li>
+                            <li><a href="#">Delete Account</a></li>
+                            <li><a href="#">Sign In</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="energy-section">
-            <!-- Info section: this could eventually link to real products -->
-            <div class="green-energy-info">
-                <h2>Green Energy Products</h2>
-                <p>Our green energy solutions help you power your home and devices sustainably. From solar panels to wind energy kits, Roslo Technologies offers eco-friendly options to reduce your carbon footprint and cut down on electricity bills.</p>
-            </div>
+    <section class="hero">
+        <img src="https://tse2.mm.bing.net/th?id=OIP.afrqa2Rh5tbeotNdoTNfkAHaE8&pid=Api" alt="Green carbon footprint image">
+    </section>
 
-            <!-- Energy calculator: basic form with 3 inputs -->
-            <div class="energy-calculator">
-                <h2>Energy Consumption Calculator</h2>
-                <form id="calculator-form">
-                    <label for="wattage">Device Wattage (W):</label><br>
-                    <input type="number" id="wattage" name="wattage" min="0"><br>
+    <section class="calculator-products">
+        <section class="energy-calculator">
+            <h2>Energy Consumption Calculator</h2>
+            <form id="calculator-form">
+                <label for="wattage">Device Wattage (W):</label><br>
+                <input type="number" id="wattage" name="wattage" min="0"><br>
 
-                    <label for="hours">Hours per Day:</label><br>
-                    <input type="number" id="hours" name="hours" min="0"><br>
+                <label for="hours">Hours per Day:</label><br>
+                <input type="number" id="hours" name="hours" min="0"><br>
 
-                    <label for="days">Days per Month:</label><br>
-                    <input type="number" id="days" name="days" min="0"><br><br>
+                <label for="days">Days per Month:</label><br>
+                <input type="number" id="days" name="days" min="0"><br><br>
 
-                    <!-- Click to calculate usage -->
-                    <button type="button" onclick="calculateEnergy()">Calculate</button>
-                </form>
-
-                <!-- Where the output result shows up -->
-                <p id="result"></p>
-            </div>
+                <button type="button" onclick="calculateEnergy()">Calculate</button>
+            </form>
+            <p id="result"></p>
         </section>
 
-        <!-- Contact section - placeholders for now -->
-        <section class="contact">
-            <h3>Contact us</h3>
-            <p class="email">Email: Lorem ipsum dolor</p>
-            <p class="phone-number">Phone Number: 092218937</p>
-            <p class="address">Address: Lorem ipsum dolor sit amet</p>
-            <p class="postcode">Postcode: St6213</p>
+        <section class="green-gas-products">
+            <h2>Green Gas Products</h2>
+            <div class="product">
+                <img src="https://tse3.mm.bing.net/th?id=OIP.iEDL3BgakfnXhKXBvzFgdAHaFj&pid=Api" alt="Biogas Plant">
+                <p>Biogas Plant</p>
+            </div>
+            <div class="product">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.TL8D9oSC5cVRxzAp_1QBYwHaEK&pid=Api" alt="CNG Cylinder">
+                <p>Compressed Natural Gas Cylinder</p>
+            </div>
+            <div class="product">
+                <img src="https://tse4.mm.bing.net/th?id=OIP.a7aWVoRYpuqKJhzyT4XtrAHaE7&pid=Api" alt="Eco-Friendly Gas Stove">
+                <p>Eco-Friendly Gas Stove</p>
+            </div>
         </section>
-    </main>
+    </section>
+
+    <section class="contact">
+        <h3>Contact us</h3>
+        <p class="email">Email: Lorem ipsum dolor</p>
+        <p class="phone-number">Phone Number: 092218937</p>
+        <p class="address">Address: Lorem ipsum dolor sit amet</p>
+        <p class="postcode">Postcode: St6213</p>
+    </section>
 
     <footer>
         <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
     </footer>
 
     <script>
-        // Quick little function to calculate monthly energy use
         function calculateEnergy() {
-            // Grab the values from the form
             const wattage = parseFloat(document.getElementById('wattage').value);
             const hours = parseFloat(document.getElementById('hours').value);
             const days = parseFloat(document.getElementById('days').value);
 
-            // Just making sure all values are good numbers and not negative
-            if (
-                isNaN(wattage) || isNaN(hours) || isNaN(days) ||
-                wattage < 0 || hours < 0 || days < 0
-            ) {
+            if (isNaN(wattage) || isNaN(hours) || isNaN(days) || wattage < 0 || hours < 0 || days < 0) {
                 document.getElementById('result').innerText = "Please enter valid, non-negative numbers.";
                 return;
             }
 
-            // The actual math: watts x hours x days, then convert to kWh
             const kWh = (wattage * hours * days) / 1000;
-
-            // Show the result with 2 decimal points – looks cleaner
             document.getElementById('result').innerText = `Monthly Energy Consumption: ${kWh.toFixed(2)} kWh`;
         }
     </script>
