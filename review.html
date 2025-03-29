@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews - Roslo Technologies</title>
+  <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+  <header>
+    <div>
+      <img id="logo" src="" alt="logo">
+      <hi>Roslo Technologies</hi>
+      <button id="login">Log in</button>
+      <button id="register">Register</button>
+    </div>
+    <div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home Page</a></li>
+          <li><a href="carboonFootprint.html">Carbon Footprint Calculator</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li class="dropdown">
+            <a href="#">Menu</a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Account</a></li>
+              <li><a href="#">Delete Account</a></li>
+              <li><a href="#">Sign In</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="reviews">
+      <h2>User Reviews</h2>
+
+      <div class="review">
+        <p><strong>Sarah T.</strong> - "The calculator really opened my eyes. I’ve already started making changes!"</p>
+      </div>
+
+      <div class="review">
+        <p><strong>Jamal K.</strong> - "Super easy to use. I loved the booking option after seeing my score."</p>
+      </div>
+
+      <div class="review">
+        <p><strong>Lucia R.</strong> - "A must-have for anyone wanting to understand their footprint. Beautiful design too!"</p>
+      </div>
+
+      <div class="leave-review">
+        <h3>Leave a Review</h3>
+        <form id="reviewForm">
+          <input type="text" id="name" placeholder="Your name" required><br>
+          <textarea id="comment" placeholder="Your review..." required></textarea><br>
+          <button type="submit">Submit</button>
+        </form>
+        <p id="thanksMsg" style="display:none;">Thanks for your feedback!</p>
+      </div>
+    </section>
+  </main>
+
+  <section class="contact">
+    <h3>Contact us</h3>
+    <p class="email">Email: Lorem ipsum dolor</p>
+    <p class="phone-number">Phone Number: 092218937</p>
+    <p class="adress">Address: Lorem ipsum dolor sit amet</p>
+    <p class="postcode">Postcode: St6213</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('reviewForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('reviewForm').reset();
+      document.getElementById('thanksMsg').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
