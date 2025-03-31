@@ -1,173 +1,314 @@
-/* Base layout */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-main {
-    flex: 1;
+.top-bar {
     display: flex;
-    flex-direction: column;
-}
-
-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 15px 0;
-}
-
-header div:first-child {
-    position: relative;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
 }
 
-#logo {
-    width: 50px;
-    height: 50px;
+.logo img {
+    height: 40px; /* Adjust based on your logo's aspect ratio */
 }
 
-hi {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
+.title {
     font-size: 24px;
+    font-weight: bold;
 }
 
-button {
-    background-color: #3498db;
+.auth-buttons button {
+    background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: auto;
-}
-
-button:hover {
-    background-color: #2980b9;
-}
-
-header div:first-child button + button {
+    padding: 10px 20px;
     margin-left: 10px;
-}
-
-nav {
-    background-color: #34495e;
-    width: 100%;
-    padding: 10px 0;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    width: 90%;
-    max-width: 1200px;
-}
-
-li {
-    position: relative;
-    padding: 10px 15px;
     cursor: pointer;
-    color: white;
-    font-size: 18px;
-}
-
-li a {
-    color: white;
-    text-decoration: none;
-}
-
-li:hover {
-    background-color: #1abc9c;
     border-radius: 5px;
 }
 
-li.dropdown:hover .dropdown-menu {
-    display: block;
+.auth-buttons button:hover {
+    background-color: #45a049;
+}
+/* Navigation Bar */
+.nav-bar {
+    display: flex;
+    background-color: #444; /* Slightly lighter dark background */
+    padding: 10px 0;
+    margin-bottom: 0;
 }
 
-.dropdown-menu {
+.nav-bar a, .dropbtn {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav-bar a:hover, .dropdown:hover .dropbtn {
+    background-color: #555; /* Darker background on hover */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #34495e;
+    background-color: #f9f9f9; /* Light background */
     min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    flex-direction: column;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.dropdown-menu li {
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* Light gray background on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.main-image {
+    display: block; /* Ensures the image is treated as a block-level element */
+    width: 100vw; /* Sets the image width to 100% of the viewport width */
+    height: 25vh; /* Sets the image height to 25% of the viewport height */
+    object-fit: cover; /* Ensures the image covers the specified dimensions without distortion */
+    margin: 0; /* Removes any default margin */
+    padding: 0; /* Removes any default padding */
+}
+
+/* Calculator Container */
+.calculator {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Calculator Header */
+.calculator h2 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form Labels */
+.calculator label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input Fields */
+.calculator input[type="number"] {
+    width: calc(100% - 22px);
     padding: 10px;
-    white-space: nowrap;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
 }
 
-.dropdown-menu li:hover {
-    background-color: #1abc9c;
-    border-radius: 0;
-}
-
-.hero {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+/* Calculate Button */
+.calculator button {
     display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.calculator-products {
+.calculator button:hover {
+    background-color: #45a049;
+}
+
+/* Results Display */
+#results {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .calculator {
+        padding: 15px;
+    }
+
+    .calculator h2 {
+        font-size: 20px;
+    }
+
+    .calculator input[type="number"], .calculator button {
+        font-size: 14px;
+    }
+}
+.calculator {
+    width: 100%; /* Ensures the calculator spans the full width of its container */
+    max-width: 600px; /* Optional: Limits the maximum width for better readability */
+    margin-top: 0; /* Removes any top margin */
+    margin-left: 0; /* Aligns the calculator to the left */
+}
+.content-container {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.calculator {
+    width: 60%;
+    /* Existing styles for the calculator */
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.calculator {
+    flex: 1;
+    margin-right: 20px;
+    /* Additional styling for the calculator */
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.calculator {
+    flex: 2;
+    margin-right: 20px;
+    /* Existing styles for the calculator */
+}
+
+.energy-tips {
+    flex: 1;
+    max-width: 400px; /* Adjust this value to set the desired width */
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    /* Ensure the height matches the calculator */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.site-footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 14px;
+    border-top: 1px solid #ccc;
+}
+.contact-us {
     padding: 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
-.energy-calculator, .green-gas-products {
-    flex: 1 1 48%;
-    box-sizing: border-box;
+.contact-us h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.green-gas-products {
-    padding-left: 20px;
+.contact-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.green-gas-products img {
-    width: 80%;
-    max-width: 250px;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 8px;
+.contact-item {
+    display: flex;
+    align-items: center;
 }
 
-.contact {
-    margin-top: 40px;
-    background: #f4f4f4;
+.contact-item strong {
+    margin-right: 5px;
+}
+
+.green-products {
     padding: 20px;
+    background-color: #f9f9f9;
     border-top: 1px solid #ccc;
 }
 
-footer {
-    background-color: purple;
-    color: white;
+.green-products h2 {
     text-align: center;
-    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.product-item {
+    text-align: center;
+    max-width: 200px;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    max-height: 150px; /* Adjust based on your design preference */
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Add spacing between all major sections */
+.content-container,
+.contact-us,
+.green-products{
+    margin-top: 40px;
 }
