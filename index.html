@@ -3,145 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roslo Technologies - Home</title>
-    <link rel="stylesheet" href="mystyle.css">
-    <style>
-        .hero {
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        .hero img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .calculator-products {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
-        .energy-calculator, .green-gas-products {
-            flex: 1 1 48%;
-            box-sizing: border-box;
-        }
-
-        .green-gas-products {
-            padding-left: 20px;
-        }
-
-        .green-gas-products img {
-            width: 100%;
-            height: auto;
-            margin-bottom: 10px;
-            border-radius: 8px;
-        }
-
-        .contact {
-            margin-top: 40px;
-            background: #f4f4f4;
-            padding: 20px;
-            border-top: 1px solid #ccc;
-        }
-    </style>
+    <title>Roslo Technologies</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div>
-            <img id="logo" src="" alt="logo">
-            <hi>Roslo Technologies</hi>
-            <button id="login">Log in</button>
-            <button id="register">Register</button>
+    <div class="top-bar">
+        <div class="logo">
+            <img src="logo.png" alt="Roslo Technologies Logo">
         </div>
-        <div>
-            <nav>
+        <div class="title">
+            Roslo Technologies
+        </div>
+        <div class="auth-buttons">
+            <button onclick="location.href='signup.html'">Sign Up</button>
+            <button onclick="location.href='login.html'">Login</button>
+        </div>
+    </div>
+    <nav class="nav-bar">
+        <a href="homepage.php">Home</a>
+        <a href="carbonFootprint.php">Carbon Footprint Calculator</a>
+        <a href="review.php">Reviews</a>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="option1.php">Option 1</a>
+                <a href="option2.php">Option 2</a>
+                <a href="option3.php">Option 3</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <img src="path/to/your/image.jpg" alt="Description of image" class="main-image">
+
+        <div class="content-container">
+            <div class="calculator">
+                <h2>Energy Consumption Calculator</h2>
+                <form id="energyCalculator">
+                    <label for="power">Power Consumption (Watts):</label>
+                    <input type="number" id="power" placeholder="Enter power in watts" required>
+
+                    <label for="hours">Daily Usage (Hours):</label>
+                    <input type="number" id="hours" placeholder="Enter usage in hours per day" required>
+
+                    <label for="rate">Electricity Rate ($/kWh):</label>
+                    <input type="number" id="rate" placeholder="Enter cost per kWh" required>
+
+                    <button type="submit">Calculate</button>
+                </form>
+                <div id="results"></div>
+            </div>
+
+            <div class="energy-tips">
+                <h2>Energy-Saving Tips</h2>
                 <ul>
-                    <li><a href="index.html">Home Page</a></li>
-                    <li><a href="carboonFootprint.html">Carbon Footprint Calculator</a></li>
-                    <li><a href="review.html">Reviews</a></li>
-                    <li class="dropdown">
-                        <a href="#">Menu</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Delete Account</a></li>
-                            <li><a href="#">Sign In</a></li>
-                        </ul>
-                    </li>
+                    <li>Set your thermostat to 68°F (20°C) when you're home and awake, and lower when you're asleep or away to save on heating costs. (<a href="https://www.pse.com/en/rebates/energy-saving-tips" target="_blank">pse.com</a>)</li>
+                    <li>Seal air leaks around windows and doors using caulk or weatherstripping to prevent heat loss. (<a href="https://www.energy.gov/energysaver/fall-and-winter-energy-saving-tips" target="_blank">energy.gov</a>)</li>
+                    <li>Replace incandescent bulbs with ENERGY STAR® certified LED bulbs, which use up to 90% less energy and last 15 times longer. (<a href="https://www.energystar.gov/products/recent_program_updates/low-no-cost-tips" target="_blank">energystar.gov</a>)</li>
+                    <li>Use ceiling fans to circulate warm air during winter, allowing you to lower your thermostat setting without reducing comfort. (<a href="https://www.directenergy.com/en/learn/reduce-energy-costs/25-energy-efficiency-tips" target="_blank">directenergy.com</a>)</li>
+                    <li>Unplug electronic devices when not in use to eliminate "vampire" energy consumption from appliances that draw power even when turned off. (<a href="https://www.thesun.co.uk/money/33857354/vampire-energy-save-bills/" target="_blank">thesun.co.uk</a>)</li>
                 </ul>
-            </nav>
+            </div>
         </div>
-    </header>
+    </div>
 
-    <section class="hero">
-        <img src="https://tse2.mm.bing.net/th?id=OIP.afrqa2Rh5tbeotNdoTNfkAHaE8&pid=Api" alt="Green carbon footprint image">
+    <section class="green-products">
+    <h2>Green Products</h2>
+    <div class="product-list">
+        <div class="product-item">
+            <img src="path/to/solar-panel.jpg" alt="Solar Panel" class="product-image">
+            <p class="product-name">Solar Panel</p>
+        </div>
+        <div class="product-item">
+            <img src="path/to/wind-turbine.jpg" alt="Wind Turbine" class="product-image">
+            <p class="product-name">Wind Turbine</p>
+        </div>
+        <div class="product-item">
+            <img src="path/to/led-bulb.jpg" alt="LED Light Bulb" class="product-image">
+            <p class="product-name">LED Light Bulb</p>
+        </div>
+    </div>
     </section>
+    
 
-    <section class="calculator-products">
-        <section class="energy-calculator">
-            <h2>Energy Consumption Calculator</h2>
-            <form id="calculator-form">
-                <label for="wattage">Device Wattage (W):</label><br>
-                <input type="number" id="wattage" name="wattage" min="0"><br>
-
-                <label for="hours">Hours per Day:</label><br>
-                <input type="number" id="hours" name="hours" min="0"><br>
-
-                <label for="days">Days per Month:</label><br>
-                <input type="number" id="days" name="days" min="0"><br><br>
-
-                <button type="button" onclick="calculateEnergy()">Calculate</button>
-            </form>
-            <p id="result"></p>
-        </section>
-
-        <section class="green-gas-products">
-            <h2>Green Gas Products</h2>
-            <div class="product">
-                <img src="https://tse3.mm.bing.net/th?id=OIP.iEDL3BgakfnXhKXBvzFgdAHaFj&pid=Api" alt="Biogas Plant">
-                <p>Biogas Plant</p>
-            </div>
-            <div class="product">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.TL8D9oSC5cVRxzAp_1QBYwHaEK&pid=Api" alt="CNG Cylinder">
-                <p>Compressed Natural Gas Cylinder</p>
-            </div>
-            <div class="product">
-                <img src="https://tse4.mm.bing.net/th?id=OIP.a7aWVoRYpuqKJhzyT4XtrAHaE7&pid=Api" alt="Eco-Friendly Gas Stove">
-                <p>Eco-Friendly Gas Stove</p>
-            </div>
-        </section>
-    </section>
-
-    <section class="contact">
-        <h3>Contact us</h3>
-        <p class="email">Email: Lorem ipsum dolor</p>
-        <p class="phone-number">Phone Number: 092218937</p>
-        <p class="address">Address: Lorem ipsum dolor sit amet</p>
-        <p class="postcode">Postcode: St6213</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
-    </footer>
 
     <script>
-        function calculateEnergy() {
-            const wattage = parseFloat(document.getElementById('wattage').value);
-            const hours = parseFloat(document.getElementById('hours').value);
-            const days = parseFloat(document.getElementById('days').value);
+        document.getElementById('energyCalculator').addEventListener('submit', function(e) {
+            e.preventDefault();
 
-            if (isNaN(wattage) || isNaN(hours) || isNaN(days) || wattage < 0 || hours < 0 || days < 0) {
-                document.getElementById('result').innerText = "Please enter valid, non-negative numbers.";
+            const power = parseFloat(document.getElementById('power').value);
+            const hours = parseFloat(document.getElementById('hours').value);
+            const rate = parseFloat(document.getElementById('rate').value);
+
+            if (isNaN(power) || isNaN(hours) || isNaN(rate)) {
+                alert('Please enter valid numbers in all fields.');
                 return;
             }
 
-            const kWh = (wattage * hours * days) / 1000;
-            document.getElementById('result').innerText = `Monthly Energy Consumption: ${kWh.toFixed(2)} kWh`;
-        }
+            const dailyConsumption = (power * hours) / 1000;
+            const monthlyConsumption = dailyConsumption * 30;
+            const annualConsumption = dailyConsumption * 365;
+
+            const dailyCost = dailyConsumption * rate;
+            const monthlyCost = monthlyConsumption * rate;
+            const annualCost = annualConsumption * rate;
+
+            document.getElementById('results').innerHTML = `
+                <h3>Results:</h3>
+                <p>Daily Consumption: ${dailyConsumption.toFixed(2)} kWh</p>
+                <p>Monthly Consumption: ${monthlyConsumption.toFixed(2)} kWh</p>
+                <p>Annual Consumption: ${annualConsumption.toFixed(2)} kWh</p>
+                <p>Daily Cost: $${dailyCost.toFixed(2)}</p>
+                <p>Monthly Cost: $${monthlyCost.toFixed(2)}</p>
+                <p>Annual Cost: $${annualCost.toFixed(2)}</p>
+            `;
+        });
     </script>
 </body>
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <div class="contact-details">
+            <div class="contact-item">
+                <strong>Email:</strong> contact@roslotech.com
+            </div>
+            <div class="contact-item">
+                <strong>Address:</strong> 123 Tech Lane, Innovation City
+            </div>
+            <div class="contact-item">
+                <strong>Phone Number:</strong> +1 (555) 123-4567
+            </div>
+            <div class="contact-item">
+                <strong>Postcode:</strong> IC 45678
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
+    </footer>
 </html>
