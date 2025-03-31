@@ -40,8 +40,8 @@
     <div class="main-content">
         <h1>Carbon Footprint Calculator</h1>
         <p>Use the tool below to calculate your household's carbon footprint.</p>
-        <iframe src="https://www3.epa.gov/carbon-footprint-calculator/" width="100%" height="600px" style="border:none;">
-            Your browser does not support iframes.
+        <iframe width="710" height="1300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx"></iframe>
+        Your browser does not support iframes.
         </iframe>
     </div>
 
