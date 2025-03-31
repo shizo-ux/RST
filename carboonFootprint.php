@@ -4,123 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carbon Footprint Calculator</title>
-    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div>
-            <img id="logo" src="" alt="logo">
-            <hi>Roslo Technologies</hi>
-            <button id="login">Log in</button>
-            <button id="register">Register</button>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="logo">
+            <img src="logo.png" alt="Roslo Technologies Logo">
         </div>
-        <div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home Page</a></li>
-                    <li><a href="carboonFootprint.html">Carbon Footprint Calculator</a></li>
-                    <li><a href="#">Reviews</a></li>
-                    <li class="dropdown">
-                        <a href="#">Menu</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Account</a></li>
-                            <li><a href="#">Delete Account</a></li>
-                            <li><a href="#">Sign In</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+        <div class="title">
+            Roslo Technologies
         </div>
-    </header>
+        <div class="auth-buttons">
+            <button onclick="location.href='signup.html'">Sign Up</button>
+            <button onclick="location.href='login.html'">Login</button>
+        </div>
+    </div>
 
-    <main>
-        <section class="calculator-section">
-            <h2>Carbon Footprint Calculator</h2>
-            <form id="carbonForm">
-                <label for="electricity">Electricity Usage (kWh/month):</label><br>
-                <input type="number" id="electricity" name="electricity" min="0"><br>
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <a href="homepage.php">Home</a>
+        <a href="carbonFootprint.php">Carbon Footprint Calculator</a>
+        <a href="review.php">Reviews</a>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+                <a href="option1.php">Option 1</a>
+                <a href="option2.php">Option 2</a>
+                <a href="option3.php">Option 3</a>
+            </div>
+        </div>
+    </nav>
 
-                <label for="miles">Miles Driven per Month:</label><br>
-                <input type="number" id="miles" name="miles" min="0"><br>
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>Carbon Footprint Calculator</h1>
+        <p>Use the tool below to calculate your household's carbon footprint.</p>
+        <iframe src="https://www3.epa.gov/carbon-footprint-calculator/" width="100%" height="600px" style="border:none;">
+            Your browser does not support iframes.
+        </iframe>
+    </div>
 
-                <label for="flights">Flights per Year:</label><br>
-                <input type="number" id="flights" name="flights" min="0"><br><br>
-
-                <button type="button" onclick="calculateCarbonFootprint()">Calculate</button>
-            </form>
-
-            <div id="carbonResult" class="result-box"></div>
-            <div id="bookingArea"></div>
-        </section>
-    </main>
-
-    <section class="contact">
-        <h3>Contact us</h3>
-        <p class="email">Email: Lorem ipsum dolor</p>
-        <p class="phone-number">Phone Number: 092218937</p>
-        <p class="adress">Address: Lorem ipsum dolor sit amet</p>
-        <p class="postcode">Postcode: St6213</p>
-    </section>
-
-    <footer>
+    <!-- Footer -->
+    <footer class="site-footer">
         <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
     </footer>
-
-    <script>
-        function calculateCarbonFootprint() {
-            const electricity = parseFloat(document.getElementById('electricity').value);
-            const miles = parseFloat(document.getElementById('miles').value);
-            const flights = parseFloat(document.getElementById('flights').value);
-
-            if (isNaN(electricity) || isNaN(miles) || isNaN(flights) || electricity < 0 || miles < 0 || flights < 0) {
-                document.getElementById('carbonResult').innerHTML = '<p>Please enter valid, non-negative values.</p>';
-                return;
-            }
-
-            const carbon = (electricity * 0.0004 * 12) + (miles * 0.000404 * 12) + (flights * 0.25);
-            let resultHTML = `<p>Your estimated annual carbon footprint is <strong>${carbon.toFixed(2)}</strong> tons of CO2.</p>`;
-
-            if (carbon > 10) {
-                resultHTML += `
-                    <div class="appointment">
-                        <p>Your carbon footprint is higher than average. Would you like to speak with one of our sustainability consultants?</p>
-                        <button onclick="showBookingForm()">Book an Appointment</button>
-                    </div>
-                `;
-            } else {
-                resultHTML += `
-                    <div class="advice">
-                        <p>Great job! Your footprint is within a reasonable range. To go even greener, consider using energy-efficient appliances and reducing unnecessary travel.</p>
-                    </div>
-                `;
-            }
-
-            document.getElementById('carbonResult').innerHTML = resultHTML;
-        }
-
-        function showBookingForm() {
-            const formHTML = `
-                <div class="booking-form">
-                    <h3>Book Your Appointment</h3>
-                    <label for="fullName">Full Name:</label><br>
-                    <input type="text" id="fullName" name="fullName"><br>
-
-                    <label for="date">Preferred Date:</label><br>
-                    <input type="text" id="date" name="date" placeholder="e.g. April 4, 2025"><br>
-
-                    <label for="contact">Contact Info:</label><br>
-                    <input type="text" id="contact" name="contact" placeholder="Email or Phone"><br><br>
-
-                    <button onclick="submitBooking()">Submit</button>
-                </div>
-            `;
-
-            document.getElementById('bookingArea').innerHTML = formHTML;
-        }
-
-        function submitBooking() {
-            alert('Thank you! Your appointment has been submitted. We’ll be in touch soon.');
-        }
-    </script>
 </body>
 </html>
