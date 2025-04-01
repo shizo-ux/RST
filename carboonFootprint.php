@@ -37,17 +37,75 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <h1>Carbon Footprint Calculator</h1>
-        <p>Use the tool below to calculate your household's carbon footprint.</p>
-        <iframe width="710" height="1300" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" src="https://calculator.carbonfootprint.com/calculator.aspx"></iframe>
-        Your browser does not support iframes.
-        </iframe>
+    <div class="calculator">
+        <h2>Calculate Your Carbon Footprint</h2>
+        
+        <label>Monthly Electricity Usage (kWh):</label>
+        <input type="number" id="electricity">
+        
+        <label>Natural Gas Usage (therms/month):</label>
+        <input type="number" id="gas">
+        
+        <label>Vehicle Miles Driven Monthly:</label>
+        <input type="number" id="miles">
+        
+        <label>Vehicle Type:</label>
+        <select id="vehicleType">
+            <option value="gasoline">Gasoline Car</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="electric">Electric Vehicle</option>
+        </select>
+        
+        <label>Flights (hours flown annually):</label>
+        <input type="number" id="flights">
+        
+        <button onclick="calculateFootprint()">Calculate</button>
+        <button onclick="resetForm()">Reset</button>
+        
+        <h3>Annual Carbon Footprint: <span id="result">0</span> lbs CO₂</h3>
     </div>
 
     <!-- Footer -->
     <footer class="site-footer">
         <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
     </footer>
+    <script>
+        // Emission factors from EPA GHG Equivalencies Calculator
+        const EMISSION_FACTORS = {
+            electricity: 1.37, // lbs CO2 per kWh
+            gas: 13.46,        // lbs CO2 per therm
+            vehicle: {
+                gasoline: 0.916, // lbs CO2 per mile
+                hybrid: 0.614,
+                electric: 0.297
+            },
+            flights: 53.3       // lbs CO2 per flight hour
+        };
+
+        function calculateFootprint() {
+            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+            const gas = parseFloat(document.getElementById('gas').value) || 0;
+            const miles = parseFloat(document.getElementById('miles').value) || 0;
+            const vehicleType = document.getElementById('vehicleType').value;
+            const flights = parseFloat(document.getElementById('flights').value) || 0;
+
+            // Calculations
+            const elecFootprint = electricity * EMISSION_FACTORS.electricity * 12;
+            const gasFootprint = gas * EMISSION_FACTORS.gas * 12;
+            const vehicleFootprint = miles * EMISSION_FACTORS.vehicle[vehicleType] * 12;
+            const flightFootprint = flights * EMISSION_FACTORS.flights;
+
+            const total = elecFootprint + gasFootprint + vehicleFootprint + flightFootprint;
+            
+            document.getElementById('result').textContent = total.toFixed(2);
+            document.getElementById('advice').style.display = total > 16000 ? 'block' : 'none';
+        }
+
+        function resetForm() {
+            document.querySelectorAll('.calculator input').forEach(input => input.value = '');
+            document.getElementById('result').textContent = '0';
+            document.getElementById('advice').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
