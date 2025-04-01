@@ -64,11 +64,6 @@
         
         <h3>Annual Carbon Footprint: <span id="result">0</span> lbs CO₂</h3>
     </div>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
-    </footer>
     <script>
         // Emission factors from EPA GHG Equivalencies Calculator
         const EMISSION_FACTORS = {
@@ -108,4 +103,24 @@
         }
     </script>
 </body>
+    <section class="contact-us">
+        <h2>Contact Us</h2>
+        <div class="contact-details">
+            <div class="contact-item">
+                <strong>Email:</strong> contact@roslotech.com
+            </div>
+            <div class="contact-item">
+                <strong>Address:</strong> 123 Tech Lane, Innovation City
+            </div>
+            <div class="contact-item">
+                <strong>Phone Number:</strong> +1 (555) 123-4567
+            </div>
+            <div class="contact-item">
+                <strong>Postcode:</strong> IC 45678
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <p>&copy; 2025 Roslo Technologies. All rights reserved.</p>
+    </footer>
 </html>
