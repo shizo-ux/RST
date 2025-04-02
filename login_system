@@ -1,0 +1,146 @@
+<?php
+// database.php
+$server = "sfc-development";
+$instance = ""; // Optional instance name
+$sqluser = "sqlUserName";
+$sqlpass = "SQL-UserName";
+$db = "UserName";
+
+$serverName = $instance ? "$server\\$instance" : $server;
+$connectionInfo = array("Database" => $db, "UID" => $sqluser, "PWD" => $sqlpass);
+$conn = sqlsrv_connect($serverName, $connectionInfo);
+
+if (!$conn) {
+    echo "<div class='alert alert-danger'>Connection failed.</div>";
+    print_r(sqlsrv_errors());
+    die();
+}
+
+function SQLSRV_INSERT_ID($conn) {
+    $queryidresult = "SELECT SCOPE_IDENTITY() AS [SCOPE_IDENTITY];";
+    $idresult = sqlsrv_query($conn, $queryidresult);
+    $userRow = sqlsrv_fetch_array($idresult, SQLSRV_FETCH_ASSOC);
+    return $userRow['SCOPE_IDENTITY'];
+}
+?>
+
+<!-- index.php (Login Page) -->
+<?php
+require_once "database.php";
+if (isset($_POST["login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM users WHERE email = ?";
+    $params = [$email];
+    $stmt = sqlsrv_query($conn, $sql, $params);
+
+    if ($stmt && ($user = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))) {
+        if (password_verify($password, $user["password"])) {
+            echo "<div class='alert alert-success'>Login successful. Welcome, {$user['full_name']}!</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Invalid password.</div>";
+        }
+    } else {
+        echo "<div class='alert alert-danger'>Email not found.</div>";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5" style="max-width: 400px;">
+    <h2 class="mb-4 text-center">User Login</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <button type="submit" name="login" class="btn btn-primary w-100">Login</button>
+        <p class="text-center mt-3">Don't have an account? <a href="registration.php">Register here</a></p>
+    </form>
+</div>
+</body>
+</html>
+
+<!-- registration.php -->
+<?php
+require_once "database.php";
+if (isset($_POST["submit"])) {
+    $fullname = $_POST["fullname"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $repeat_password = $_POST["repeat_password"];
+
+    $errors = [];
+    if (empty($fullname) || empty($email) || empty($password) || empty($repeat_password)) {
+        $errors[] = "All fields are required.";
+    }
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
+    }
+    if ($password !== $repeat_password) {
+        $errors[] = "Passwords do not match.";
+    }
+
+    if (empty($errors)) {
+        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
+        $params = [$fullname, $email, $passwordHash];
+        $stmt = sqlsrv_query($conn, $sql, $params);
+
+        if ($stmt) {
+            echo "<div class='alert alert-success'>Registration successful. ID: " . SQLSRV_INSERT_ID($conn) . "</div>";
+        } else {
+            echo "<div class='alert alert-danger'>Registration failed.</div>";
+            print_r(sqlsrv_errors());
+        }
+    } else {
+        foreach ($errors as $error) {
+            echo "<div class='alert alert-danger'>$error</div>";
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="mb-4 text-center">User Registration</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" name="fullname" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Repeat Password</label>
+            <input type="password" name="repeat_password" class="form-control" required>
+        </div>
+        <button type="submit" name="submit" class="btn btn-success w-100">Register</button>
+        <p class="text-center mt-3">Already have an account? <a href="index.php">Login here</a></p>
+    </form>
+</div>
+</body>
+</html>
