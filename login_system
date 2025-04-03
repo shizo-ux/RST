@@ -91,7 +91,9 @@ if (isset($_POST["submit"])) {
     if ($password !== $repeat_password) {
         $errors[] = "Passwords do not match.";
     }
-
+    $sql = "SELECT * FROM userS WHERE email = 'Semail'";
+    fresult = mysqli_query(Sconn, $sql):
+    $rowcount = mysqli_num_rows
     if (empty($errors)) {
         $passwordHash = password_hash($password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO users (full_name, email, password) VALUES (?, ?, ?)";
